@@ -1,0 +1,30 @@
+In what year was the oldest movie in our list released?
+i = Movie.minimum("year")
+
+
+In what year was the most recent movie in our list released?
+i = Movie.maximum("year")
+
+What is the duration of the shortest movie in our list?
+Movie.minimum("duration")
+
+What is the longest movie in our list?
+Movie.where(:duration => Movie.minimum("duration"))
+
+How many movies in our list have the word 'godfather' in their titles?
+Movie.where("title LIKE '%godfather%'").count
+
+
+Who directed Life Is Beautiful?
+i = Movie.find_by(:title => "Life Is Beautiful").director_id
+b = Director.find_by({:id => i})
+b.name
+
+How many movies in our list were directed by Francis Ford Coppola?
+a=Director.find_by(:name => "Francis Ford Coppola")
+i=Movie.where(:director_id => a).count
+
+
+What is the most recent movie in our list directed by Francis Ford Coppola?
+a=Director.find_by(:name => "Francis Ford Coppola")
+i=Movie.where(:director_id => a).order("year DESC").first
