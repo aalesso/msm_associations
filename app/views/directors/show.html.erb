@@ -15,10 +15,10 @@
       <dd><%= truncate(@director.bio) %></dd>
 
       <dt>Image url</dt>
-      <dd><%= @director.image_url %></dd>
+      <dd><img src="<%= @director.image_url %>"></dd>
 
       <dt>Number of films directed </dt>
-      <dd><%= Movie.where(:director_id => @director.id).count %> </dd>
+      <dd><%= @director.movie.count %> </dd>
 
     </dl>
 
@@ -37,10 +37,13 @@
 </div>
 
 <ul>
-  <% Movie.where(:director_id => @director.id).each do |movie|%>
+  <% @director.movie.each do |movie|%>
   <li><a href="/movies/<%=movie.id%>"><%=movie.title %></a></li>
   <%end%>
 </ul>
+
+
+
 
 <form action="/create_movie" method="post">
   <!-- Hidden input for authenticity token to protect from forgery -->
@@ -49,10 +52,10 @@
   <!-- Label and input for title -->
   <div class="form-group">
     <label for="title" class="control-label">
-      Title
+      Movie Title
     </label>
 
-    <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @movie.title %>">
+    <input type="text" id="title" name="title" placeholder="Title" class="form-control">
   </div>
 
   <!-- Label and input for year -->
@@ -61,7 +64,7 @@
       Year
     </label>
 
-    <input type="text" id="year" name="year" placeholder="Year" class="form-control" value="<%= @movie.year %>">
+    <input type="text" id="year" name="year" placeholder="Year" class="form-control">
   </div>
 
   <!-- Label and input for duration -->
@@ -70,7 +73,7 @@
       Duration
     </label>
 
-    <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control" value="<%= @movie.duration %>">
+    <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control">
   </div>
 
   <!-- Label and input for description -->
@@ -79,7 +82,8 @@
       Description
     </label>
 
-    <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3"><%= @movie.description %></textarea>
+    <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3">
+    </textarea>
   </div>
 
   <!-- Label and input for image_url -->
@@ -88,16 +92,16 @@
       Image url
     </label>
 
-    <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control" value="<%= @movie.image_url %>">
+    <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control">
   </div>
 
   <!-- Label and input for director_id -->
 
-    <!-- <select name="director_id" class="form-control">
-    </select> -->
+  <!-- <select name="director_id" class="form-control">
+</select> -->
 
 <input type="hidden" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @director.name%>">
-    <!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
+<!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
 
 
 </div>
