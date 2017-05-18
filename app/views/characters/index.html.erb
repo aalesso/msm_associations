@@ -32,7 +32,7 @@
         </td>
         <td>
           <a href="/actors/<%= character.actor_id %>">
-            <%=Actor.find_by(:id => character.actor_id).name %>
+            <%=Actor.find_by(:id => character.actor_id).try(:name) %>
           </a>
         </td>
         <td><%= character.name %></td>
