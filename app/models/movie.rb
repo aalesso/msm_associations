@@ -20,6 +20,6 @@ class Movie < ApplicationRecord
 belongs_to(:director,:class_name =>"Director",:foreign_key=>"director_id")
 has_many(:character,:class_name => "Character", :foreign_key => "movie_id")
 
-
+has_many :actor, :through => :character
 
 end

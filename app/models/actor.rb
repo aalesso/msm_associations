@@ -11,5 +11,5 @@ class Actor < ApplicationRecord
   #  - bio: no rules
   #  - image_url: no rules
   has_many(:character,:class_name => "Character", :foreign_key => "actor_id")
-
+has_many :movie, :through => :character
 end
