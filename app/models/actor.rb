@@ -10,9 +10,9 @@ class Actor < ApplicationRecord
   #  - dob: no rules
   #  - bio: no rules
   #  - image_url: no rules
-  has_many(:character,:class_name => "Character", :foreign_key => "actor_id")
-  
-  has_many :character
+  has_many(:characters,:class_name => "Character", :foreign_key => "actor_id")
 
-  has_many :movie, :through => :character
+  has_many :characters
+
+  has_many :movie, :through => :characters
 end
