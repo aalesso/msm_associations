@@ -8,4 +8,6 @@ validates :name, :presence =>true, :uniqueness => {:scope => :dob}
 
 has_many(:movie,:class_name => "Movie", :foreign_key => "director_id")
 
+has_many :movie
+has_many :actor, :through => :movie
 end

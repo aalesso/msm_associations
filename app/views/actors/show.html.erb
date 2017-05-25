@@ -21,7 +21,7 @@
 
 
 
-      <dt>Number of Movies </dt>
+      <dt>Count of Characters  </dt>
 
       <dd><%= @actor.character.count %> </dd>
 
@@ -49,13 +49,12 @@
   <ul>
 
     <% @actor.movie.each do |movie|%>
-
     <li>
-      <%=movie.title %>
 
+      <%=movie.title %>
     </li>
 
-      <%end%>
+    <%end%>
   </ul>
 </div>
 
@@ -64,50 +63,52 @@
 
 
 
+
+
 <div>
-<h2>
-Add a Character
-</h2>
-<form action="/create_character" method="post">
-  <!-- Hidden input for authenticity token to protect from forgery -->
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+  <h2>
+    Add a Character
+  </h2>
+  <form action="/create_character" method="post">
+    <!-- Hidden input for authenticity token to protect from forgery -->
+    <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-  <!-- Label and input for movie_id -->
-  <div class="form-group">
-    <label for="movie_id" class="control-label">
-      Movie Title
-    </label>
+    <!-- Label and input for movie_id -->
+    <div class="form-group">
+      <label for="movie_id" class="control-label">
+        Movie Title
+      </label>
 
-    <!-- <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control"> -->
+      <!-- <input type="text" id="movie_id" name="movie_id" placeholder="Movie" class="form-control"> -->
 
       <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, @actor.id), :class => "form-control") %>
 
-    <!-- Label and input for actor_id -->
-    <div class="form-group">
-      <label for="actor_id" class="control-label">
-        <!-- Actor -->
-      </label>
+      <!-- Label and input for actor_id -->
+      <div class="form-group">
+        <label for="actor_id" class="control-label">
+          <!-- Actor -->
+        </label>
 
-      <input type="hidden" id="actor_id" name="actor_id" placeholder="Actor" class="form-control"
-      value="<%= @actor.id %>">
+        <input type="hidden" id="actor_id" name="actor_id" placeholder="Actor" class="form-control"
+        value="<%= @actor.id %>">
 
 
-    </div>
+      </div>
 
-    <!-- Label and input for name -->
-    <div class="form-group">
-      <label for="name" class="control-label">
-        Character Name
-      </label>
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Character Name
+        </label>
 
-      <input type="text" id="name" name="name" placeholder="Name" class="form-control" >
-    </div>
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" >
+      </div>
 
-    <button class="btn btn-success">
-      Create Character
-    </button>
-    or
-    <a href="/characters">Cancel</a>
-  </form>
+      <button class="btn btn-success">
+        Create Character
+      </button>
+      or
+      <a href="/characters">Cancel</a>
+    </form>
 
-</div>
+  </div>

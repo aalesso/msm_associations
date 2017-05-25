@@ -72,8 +72,7 @@
         </select> -->
 
         <%= select_tag(:director_id, options_from_collection_for_select(Director.all, :id, :name, @movie.director_id), :class => "form_control") %>
-
-        <!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
+        <a href="/directors/new">Add a new director</a>
 
 
     </div>
