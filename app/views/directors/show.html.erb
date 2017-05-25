@@ -43,73 +43,73 @@
 </ul>
 
 
+<div class="row">
+  <h3>Add Movie</h3>
+  <div class="col-md-12">
+
+    <form action="/create_movie" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for title -->
+      <div class="form-group">
+        <label for="title" class="control-label">
+          Movie Title
+        </label>
+
+        <input type="text" id="title" name="title" placeholder="Title" class="form-control">
+      </div>
+
+      <!-- Label and input for year -->
+      <div class="form-group">
+        <label for="year" class="control-label">
+          Year
+        </label>
+
+        <input type="text" id="year" name="year" placeholder="Year" class="form-control">
+      </div>
+
+      <!-- Label and input for duration -->
+      <div class="form-group">
+        <label for="duration" class="control-label">
+          Duration
+        </label>
+
+        <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control" value="200">
+      </div>
+
+      <!-- Label and input for description -->
+      <div class="form-group">
+        <label for="description" class="control-label">
+          Description
+        </label>
+
+        <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3">
+        </textarea>
+      </div>
+
+      <!-- Label and input for image_url -->
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Image url
+        </label>
+
+        <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control">
+      </div>
+
+      <div>
+
+        <input type="hidden" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @director.id%>">
 
 
-<form action="/create_movie" method="post">
-  <!-- Hidden input for authenticity token to protect from forgery -->
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      </div>
 
-  <!-- Label and input for title -->
-  <div class="form-group">
-    <label for="title" class="control-label">
-      Movie Title
-    </label>
+      <button class="btn btn-success">
+        Create Movie
+      </button>
+      or
+      <a href="/movies">Cancel</a>
 
-    <input type="text" id="title" name="title" placeholder="Title" class="form-control">
+    </form>
   </div>
-
-  <!-- Label and input for year -->
-  <div class="form-group">
-    <label for="year" class="control-label">
-      Year
-    </label>
-
-    <input type="text" id="year" name="year" placeholder="Year" class="form-control">
-  </div>
-
-  <!-- Label and input for duration -->
-  <div class="form-group">
-    <label for="duration" class="control-label">
-      Duration
-    </label>
-
-    <input type="text" id="duration" name="duration" placeholder="Duration" class="form-control">
-  </div>
-
-  <!-- Label and input for description -->
-  <div class="form-group">
-    <label for="description" class="control-label">
-      Description
-    </label>
-
-    <textarea id="description" name="description" placeholder="Description" class="form-control" rows="3">
-    </textarea>
-  </div>
-
-  <!-- Label and input for image_url -->
-  <div class="form-group">
-    <label for="image_url" class="control-label">
-      Image url
-    </label>
-
-    <input type="text" id="image_url" name="image_url" placeholder="Image url" class="form-control">
-  </div>
-
-  <!-- Label and input for director_id -->
-
-  <!-- <select name="director_id" class="form-control">
-</select> -->
-
-<input type="hidden" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @director.name%>">
-<!-- <input type="text" id="director_id" name="director_id" placeholder="Director" class="form-control" value="<%= @movie.director_id %>"> -->
-
-
-</div>
-<button class="btn btn-success">
-  Create Movie
-</button>
-or
-<a href="/movies">Cancel</a>
-</form>
-</div>
 </div>
